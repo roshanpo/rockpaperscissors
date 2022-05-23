@@ -1,0 +1,42 @@
+<script>
+    function computer()
+    {
+        var result = Math.floor(Math.random()*3);
+        if(result==0){
+            return "rock";
+        }
+        else if(result == 1){
+            return "paper";
+        }
+        else if(result == 2){
+            return "scissor";
+        }
+    }
+    //console.log(computer());
+    function game()
+    {
+        var computerChoice = computer();
+        var playerChoice = player();
+    }
+    function player()
+    {
+        var choice = window.prompt("rock, paper or scissor?");
+        const elements = ["rock", "paper", "scissor"]
+        for (i=0;i<=2;i++)
+        {
+            var insensitivechoice = insensitive(choice, elements[i])
+            if (insensitivechoice == true)
+            {
+                return elements[i];
+            }
+            else{
+            }
+        }
+        
+    }
+    function insensitive(string1, string2)
+        {
+            return string1.localeCompare(string2, undefined, { sensitivity: 'base' }) === 0;
+        }
+    console.log(player());
+</script>
