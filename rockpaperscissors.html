@@ -1,4 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor</title>
+</head>
+<body>
+    
+</body>
+</html>
 <script>
+
+    var computerCount = 0;
+    var playerCount = 0;
+    for (j=0;j<5;j++)
+        {
+        game();
+        }
     function computer()
     {
         var result = Math.floor(Math.random()*3);
@@ -12,16 +31,11 @@
             return "scissor";
         }
     }
-    //console.log(computer());
-    function game()
-    {
-        var computerChoice = computer();
-        var playerChoice = player();
-    }
+
     function player()
     {
         var choice = window.prompt("rock, paper or scissor?");
-        const elements = ["rock", "paper", "scissor"]
+        const elements = ["rock","paper","scissor"]
         for (i=0;i<=2;i++)
         {
             var insensitivechoice = insensitive(choice, elements[i])
@@ -32,11 +46,62 @@
             else{
             }
         }
-        
     }
     function insensitive(string1, string2)
         {
-            return string1.localeCompare(string2, undefined, { sensitivity: 'base' }) === 0;
+            return string1.localeCompare(string2, undefined, { sensitivity: 'base' }) === 0; //comparing strings to make all cases of strings same
         }
-    console.log(player());
+    function gamePlay(computerChoice, playerChoice)
+    {
+        if(computerChoice == playerChoice)
+        {
+            console.log("It's a tie. Play again!");
+        }
+        else if(computerChoice == "rock" && playerChoice == "paper")
+        {
+            //rules(computerChoice, playerChoice);
+            playerCount++;
+            console.log("Yaaay! You won!!");
+        }
+        else if(computerChoice== "paper" && playerChoice == "rock")
+        {
+            computerCount++;
+            console.log("Oops! You lose!!");
+        }
+        else if(computerChoice== "scissor" && playerChoice == "rock")
+        {
+            playerCount++;
+            console.log("Yaaay! You won!!");
+        }
+        else if(computerChoice== "rock" && playerChoice == "scissor")
+        {
+            computerCount++;
+            console.log("Oops! You lose!!");
+        }
+        else if(computerChoice== "paper" && playerChoice == "scissor")
+        {
+            playerCount++;
+            console.log("Yaaay! You won!!");
+        }
+        else if(computerChoice== "scissor" && playerChoice == "paper")
+        {
+            computerCount++;
+            console.log("Oops! You lose!!");
+        }   
+    }
+    function game()
+    {
+        var computerChoice = computer();
+        var playerChoice = player();
+        console.log("My Choice : "+computerChoice);
+        console.log("Your Choice : "+playerChoice);
+        console.log(gamePlay(computerChoice, playerChoice));         
+    }
+    
+    if(playerCount > computerCount){
+        console.log("Yaay you won. Your Score is "+ playerCount);
+            }
+    else{
+        console.log("Oops you lose. Your Score is "+ playerCount);
+        }
 </script>
