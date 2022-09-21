@@ -7,47 +7,11 @@
     <title>Rock Paper Scissor</title>
 </head>
 <body>
-    <!--<button id="rock">ROCK</button>
-    <button id="paper">PAPER</button>
-    <button id="scissor">SCISSOR</button>-->
-    <button onclick="game(0)">ROCK</button>
-    <button onclick="game(1)">PAPER</button>
-    <button onclick="game(2)">SCISSOR</button>
     
 </body>
-
 </html>
-<style>
-    #log-string{
-        display: flex;
-        width: fit-content;
-        background-color: bisque;
-        font-weight: bold;
-        margin-top: 5px;
-    }
-    #log-undefined{
-        display: none;
-    }
-</style>
 <script>
-    !function(o){console.old=console.log,console.log=function(){var n,e,t="";for(e=0;e<arguments.length;e++)t+='<span id="log-'+typeof(n=arguments[e])+'">',"object"==typeof n&&"object"==typeof JSON&&"function"==typeof JSON.stringify?t+=JSON.stringify(n):t+=n,t+="</span>&nbsp;";o.innerHTML+=t+"<br>",console.old.apply(void 0,arguments)}}
-    (document.body);
-      //styling using DOM but didn't work so used css directly
-    /*document.getElementById("log-string").style.display = "flex";
-    document.getElementById("log-string").style.width = "fit-content";
-    document.getElementById("log-string").style.fontWeight = "bold";
-    document.getElementById("log-string").style.backgroundColor = "blue";
-    */
-    var computerCount = 0;
-    var playerCount = 0;
-    /*for (j=0;j<5;j++)
-        {
-        game();
-        }
-*/
-    const body = document.body;
-    const div = document.createElement('div')
-   function buttons()
+    function buttons()
    {
     /*document.getElementById("rock").onclick = game(0);
     document.getElementById("paper").onclick = game(1);
@@ -64,11 +28,17 @@
     var scissorr = document.createTextNode("SCISSOR");
     scissor.appendChild(scissorr);
     document.body.appendChild(scissor);
-  
     
 
    }
 
+    var computerCount = 0;
+    var playerCount = 0;
+   /* for (j=0;j<5;j++)
+        {
+        game();
+        }*/
+        game();
     function computer()
     {
         var result = Math.floor(Math.random()*3);
@@ -83,26 +53,25 @@
         }
     }
 
-    function player(a)
+    function player()
     {
-        //var a;
-        //var choice = window.prompt("rock, paper or scissor?");
+        var choice = window.prompt("rock, paper or scissor?");
         const elements = ["rock","paper","scissor"]
-        //for (i=0;i<=2;i++)
-        //{
-           // var insensitivechoice = insensitive(elements[a])
-           // if (insensitivechoice == true)
-           // {
-                return elements[a];
-           // }
-           // else{
-           // }
-        //}
+        for (i=0;i<=2;i++)
+        {
+            var insensitivechoice = insensitive(choice, elements[i])
+            if (insensitivechoice == true)
+            {
+                return elements[i];
+            }
+            else{
+            }
+        }
     }
-    /*function insensitive(string1, string2)
+    function insensitive(string1, string2)
         {
             return string1.localeCompare(string2, undefined, { sensitivity: 'base' }) === 0; //comparing strings to make all cases of strings same
-        }*/
+        }
     function gamePlay(computerChoice, playerChoice)
     {
         if(computerChoice == playerChoice)
@@ -141,23 +110,19 @@
             console.log("Oops! You lose!!");
         }   
     }
-    function game(b)
+    function game()
     {
         var computerChoice = computer();
-        var playerChoice = player(b);
+        var playerChoice = player();
         console.log("My Choice : "+computerChoice);
         console.log("Your Choice : "+playerChoice);
-        console.log(gamePlay(computerChoice, playerChoice));       
+        console.log(gamePlay(computerChoice, playerChoice));         
     }
     
-    /*if(playerCount > computerCount){
+    if(playerCount > computerCount){
         console.log("Yaay you won. Your Score is "+ playerCount);
             }
     else{
         console.log("Oops you lose. Your Score is "+ playerCount);
         }
-        */
-   
-
 </script>
-        
